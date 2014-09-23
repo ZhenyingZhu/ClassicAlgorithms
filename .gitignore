@@ -1,5 +1,9 @@
 *.class
 
+# Windows file
+*.ini
+*.bat
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
