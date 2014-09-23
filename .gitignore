@@ -1,8 +1,12 @@
 *.class
 
+# Local Test 
+Test.java
+
 # Windows file
 *.ini
 *.bat
+*.lnk
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
