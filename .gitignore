@@ -8,6 +8,9 @@ Test.java
 *.bat
 *.lnk
 
+#Ubuntu file
+*.sh
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
