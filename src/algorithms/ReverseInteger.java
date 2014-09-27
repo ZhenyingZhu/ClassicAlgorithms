@@ -20,10 +20,4 @@ public class ReverseInteger {
         
         return res; 
     }
-    
-    public static void main(String[] args){
-        int A = 1000000002; 
-        int ans = new Solution().reverse(A); 
-        System.out.println(ans); 
-    }
 }

@@ -37,10 +37,4 @@ public class SpiralMatrix {
         
         return res; 
     }
-    
-    public static void main(String[] args){
-        String[] A = {"ab", "ab", "bb"}; 
-        List<String> ans = new Solution().anagrams(A); 
-        System.out.println(ans); 
-    }
 }
