@@ -11,6 +11,10 @@ public class IsRotatedString {
             return s1 == s2; 
         }
         
-        return ((s1 + s1).indexOf(s2) != -1) && ((s2 + s2).indexOf(s1) != -1); 
+        if (s1.length() != s2.length()) {
+            return false; 
+        }
+        
+        return ((s1 + s1).indexOf(s2) != -1); 
     }
 }
