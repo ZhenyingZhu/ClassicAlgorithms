@@ -1,4 +1,4 @@
-package algorithms; 
+package algorithms.treeandgraph; 
 
 import java.util.*; 
 import lib.TreeNode; 
