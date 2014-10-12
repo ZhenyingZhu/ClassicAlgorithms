@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.mathandprob;
 
 import java.util.*; 
 import lib.ListNode; 

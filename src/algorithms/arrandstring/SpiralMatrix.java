@@ -1,4 +1,4 @@
-package algorithms; 
+package algorithms.arrandstring; 
 
 import java.util.*;
 

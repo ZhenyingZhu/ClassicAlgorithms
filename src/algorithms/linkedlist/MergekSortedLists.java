@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.linkedlist;
 
 import java.util.*; 
 import lib.ListNode; 
