@@ -1,4 +1,4 @@
-package algorithms; 
+package algorithms.datastructure; 
 
 import java.util.*; 
 
