@@ -1,4 +1,4 @@
 ClassicAlgorithms
 =================
 
-Implement classic algorithms in Java. 
+Implement classic algorithms and useful functions in Java. 
