@@ -1,4 +1,4 @@
-package algorithms.detail; 
+package algorithms.rcanddp; 
 
 import java.util.*; 
 
@@ -32,6 +32,6 @@ public class RegularExpressionMatching {
             s = s.substring(1); 
         }
         
-        return isMatch(s, p.substring(2)); 
+        return isMatch(s, p.substring(2)); // s matchs * with 0 same char. 
     }
 }

@@ -1,4 +1,4 @@
-package algorithms.arrandstring; 
+package algorithms.sortandsearch; 
 
 import java.util.*; 
 
