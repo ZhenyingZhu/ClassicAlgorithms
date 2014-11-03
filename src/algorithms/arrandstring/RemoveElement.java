@@ -6,6 +6,7 @@ public class RemoveElement {
     /* Function: Remove the instance same as the given 
      *     element in an array and return the new length; 
      * Solution: This can be a template of pointer usage. 
+     *     Another solution is using partition in QS from the end. 
      */ 
     
     public int removeElement(int[] A, int elem) {
@@ -14,7 +15,7 @@ public class RemoveElement {
         }
         
         int len = 0; 
-        for (int i = 0; i < A.length; ++i) {
+        for (int i = 0; i < A.length; ++i) { 
             if (A[i] == elem) {
                 continue; 
             }
