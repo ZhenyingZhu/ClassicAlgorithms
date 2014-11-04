@@ -13,9 +13,8 @@ public class CheckGrayCodeMask {
             return false; 
         }
         
-        int b3 = (b1 ^ b2) & (1 << 8 - 1); 
-        System.out.println(b3); 
-        return ((b3 & (b3 - 1)) == 0); 
+        int b3 = (b1 ^ b2) & (1 << 8 - 1); // (byte) (b1 ^ b2)
+        return ((b3 & (b3 - 1)) == 0);  // (byte) (b3 & (b3 - 1)) == 0 is another solution
     }
     
     public static void main(String[] args) {

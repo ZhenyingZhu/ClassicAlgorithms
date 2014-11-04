@@ -8,7 +8,10 @@ public class SearchInRotatedSortedArray {
      *     the left of rotate point, or right. When target>mid, 3 case: 
      *     1. mid>st, must in the right; 2. mid<st, target<st, in the right; 
      *     3. target>=st, in the left; Notice 1 and 2 can combine by md>st or
-     *     target<st/ 
+     *     target<st. 
+     *     How: first draw three pictures. Compare target with md. If target>md, 
+     *     there are two situations make sure target is in the right, and both 
+     *     of them have md>st. The last one has two situations. 
      */ 
     
     public int search(int[] A, int target) {
