@@ -1,4 +1,4 @@
-package algorithms.detail; 
+package algorithms.mathandprob; 
 
 import java.util.*; 
 
