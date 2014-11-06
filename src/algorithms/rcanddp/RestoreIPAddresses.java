@@ -1,4 +1,4 @@
-package algorithms.arrandstring; 
+package algorithms.rcanddp; 
 
 import java.util.*; 
 
