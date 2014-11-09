@@ -13,7 +13,7 @@ public class DistinctSubsequences {
         
         int m = S.length(), n = T.length(); 
         int[][] f = new int[m + 1][n + 1]; 
-        for (int i = 0; i <= m; ++i) {
+        for (int i = 0; i <= m; ++i) { // If S[0]=T[0], then 1+0, else 0. 
             f[i][0] = 1; 
         }
         
