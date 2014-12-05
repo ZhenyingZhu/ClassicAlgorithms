@@ -28,7 +28,7 @@ public class DecodeWays {
             pre = num; 
             
             if (num == 0) {
-                if (val == 0 || val > 26) {
+                if (val == 0 || val > 26) { // So 130 cannot decode
                     return 0; 
                 } else {
                     f[i + 1] = f[i - 1]; 

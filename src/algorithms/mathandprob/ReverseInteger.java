@@ -14,7 +14,7 @@ public class ReverseInteger {
             tmp /= 10; 
         }
         
-        if ((x ^ res) >>> 31 == 1) {
+        if ((x ^ res) >>> 31 == 1) { // Since input won't exceed Integer.MAX_VALUE. Other wise need judge if x/10>MAX/10
             return -1; // Overflow, the sign change
         }
         

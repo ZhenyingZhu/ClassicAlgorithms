@@ -18,7 +18,7 @@ public class MedianOfTwoSortedArrays {
         }
     }
     
-    private int medianHelper(int[] A, int[] B, int st1, int st2, int k) {
+    private int medianHelper(int[] A, int[] B, int st1, int st2, int k) { // k is non-zero based. 
         if (st1 >= A.length) {
             return B[st2 + k - 1]; 
         }
@@ -29,8 +29,8 @@ public class MedianOfTwoSortedArrays {
             return Math.min(A[st1], B[st2]); 
         }
         
-        int key1 = st1 + k / 2 - 1 < A.length ? A[st1 + k / 2 - 1] : Integer.MAX_VALUE; 
-        int key2 = st2 + k / 2 - 1 < B.length ? B[st2 + k / 2 - 1] : Integer.MAX_VALUE; 
+        int key1 = st1 + k / 2 - 1 < A.length ? A[st1 + k / 2 - 1] : Integer.MAX_VALUE; // When two keys are same, and they are the result, they cannot be dropped. So drop only one of them. 
+        int key2 = st2 + k / 2 - 1 < B.length ? B[st2 + k / 2 - 1] : Integer.MAX_VALUE; // When an array doesn't have that mush number, it should leave there. 
         if (key1 < key2) {
             return medianHelper(A, B, st1 + k / 2, st2, k - k / 2); 
         } else {

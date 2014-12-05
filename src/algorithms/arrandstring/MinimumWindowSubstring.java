@@ -26,8 +26,6 @@ public class MinimumWindowSubstring {
             }
         }
         
-        Stack<Integer> stack = new Stack<Integer>(); 
-        
         int pt = 0, st = -1, min = Integer.MAX_VALUE; 
         int contain = 0; 
         for (int i = 0; i < S.length(); ++i) {
@@ -37,11 +35,11 @@ public class MinimumWindowSubstring {
             }
             
             map.put(cur, map.get(cur) - 1); 
-            if (map.get(cur) >= 0) { // can be negative
+            if (map.get(cur) >= 0) { // can be negative, but the window hasn't appear
                 ++contain; 
             }
             
-            while (contain == T.length()) {
+            while (contain == T.length()) { // A windows is here
                 char c = S.charAt(pt); 
                 if (!map.containsKey(c)) {
                     ++pt; 
