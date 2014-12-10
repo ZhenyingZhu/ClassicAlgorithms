@@ -7,4 +7,8 @@ public class TreeNode {
     public TreeNode(int x) {
         val = x; 
     }
+    
+    public String toString() {
+        return "node: " + val + ";"; 
+    }
 }
