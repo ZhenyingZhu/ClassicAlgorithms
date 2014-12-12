@@ -19,6 +19,6 @@ public class ParPointerTreeNode {
     }
     
     public String toString() {
-        return "/" + val + "\\"; 
+        return "" + val + ", "; 
     }
 }
