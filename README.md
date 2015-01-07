@@ -3,12 +3,13 @@ ClassicAlgorithms
 
 Implement classic algorithms and useful functions in Java. 
 
-Categories: 
-Array and string
-Bit manipulate
-Math and prob
-Data strucure
-Linked list
-RC and DP
-Sort and search
-Tree and graph. 
+<h1>Categories: </h1>
+Array and string</br>
+Bit manipulate</br>
+Math and prob</br>
+Data strucure</br>
+Linked list</br>
+RC and DP</br>
+Sort and search</br>
+Tree and graph</br>
+ 
