@@ -5,7 +5,7 @@ Implement classic algorithms and useful functions in Java.
 
 Categories: 
 ------------
-Array and string<br>
+Array and string: Dealing with the arrays or strings. <br>
 Bit manipulate<br>
 Math and prob<br>
 Data strucure<br>
