@@ -1,4 +1,4 @@
-package algorithms; 
+package algorithms.sortandsearch; 
 
 import java.util.*; 
 import lib.ListNode; 
