@@ -11,6 +11,6 @@ Math and prob: Solving math problems or probability problems. <br>
 Data structure: Using stacks, queues or other data structures to solve problems. <br>
 Linked list: Dealing with linked list. <br>
 RC and DP: Recursive and Dynamic Progress/ Greedy. <br>
-Sort and search<br>
+Sort and search: Sorting algorithms and search algorithms. <br>
 Tree and graph<br>
  
