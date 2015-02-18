@@ -11,6 +11,6 @@ Categories:
 <b>Data structure</b>: Using stacks, queues or other data structures to solve problems. <br>
 <b>Linked list</b>: Dealing with linked list. <br>
 <b>RC and DP</b>: Recursive and Dynamic Progress/ Greedy. <br>
-Sort and search: Sorting algorithms and search algorithms. <br>
+<b>Sort and search</b>: Sorting algorithms and search algorithms. <br>
 Tree and graph: Solving problems of Trees and Graphs. <br>
 Functions: Finish some useful functions in java. <br>
