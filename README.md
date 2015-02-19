@@ -12,5 +12,5 @@ Categories:
 <b>Linked list</b>: Dealing with linked list. <br>
 <b>RC and DP</b>: Recursive and Dynamic Progress/ Greedy. <br>
 <b>Sort and search</b>: Sorting algorithms and search algorithms. <br>
-Tree and graph: Solving problems of Trees and Graphs. <br>
+<b>Tree and graph</b>: Solving problems of Trees and Graphs. <br>
 Functions: Finish some useful functions in java. <br>
