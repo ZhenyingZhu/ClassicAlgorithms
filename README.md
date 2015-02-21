@@ -13,4 +13,4 @@ Categories:
 <b>RC and DP</b>: Recursive and Dynamic Progress/ Greedy. <br>
 <b>Sort and search</b>: Sorting algorithms and search algorithms. <br>
 <b>Tree and graph</b>: Solving problems of Trees and Graphs. <br>
-Functions: Finish some useful functions in java. <br>
+<b>Functions</b>: Finish some useful functions in java. <br>
