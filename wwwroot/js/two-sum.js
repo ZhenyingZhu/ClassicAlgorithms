@@ -32,5 +32,28 @@ const twoSumMap = function(nums, target) {
     }
 }
 
-console.log(twoSumMap([2, 7, 11, 15], 9));
-document.getElementById('two-sum').innerHTML = twoSumMap([2, 7, 11, 15], 13);
+const twoSumSort = function(nums, target) {
+    nums.sort(function(a, b) {
+        return a - b
+    });
+
+    let i = 0;
+    let j = nums.length - 1;
+
+    while (i < j) {
+        if (nums[i] + nums[j] === target) {
+            return [i, j];
+        }
+
+        if (nums[i] + nums[j] < target) {
+            i++;
+        }
+        else
+        {
+            j--;
+        }
+    }
+}
+
+// console.log(twoSumSort([2, 7, 11, 15], 9));
+document.getElementById('two-sum').innerHTML = twoSumSort([2, 7, 11, 15], 9);
