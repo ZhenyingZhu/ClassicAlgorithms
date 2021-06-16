@@ -1,4 +1,24 @@
 const lengthOfLongestSubstring = function(s) {
+    let max = 0;
+    let st = 0;
+
+    let charIndexes = new Map();
+    for (let i = 0; i < s.length; i++) {
+        if (charIndexes.has(s[i])) {
+            let charIndex = charIndexes.get(s[i]);
+            if (charIndex >= st) {
+                // console.log(s.substring(st, i));
+                max = Math.max(max, i - st);
+
+                st = charIndex + 1;
+            }
+        }
+
+        charIndexes.set(s[i], i);
+    }
+
+    // console.log(s.substring(st));
+    return Math.max(max, s.length - st);
 };
 
 const lengthOfLongestSubstringWrongSolution = function(s) {
@@ -25,4 +45,24 @@ const lengthOfLongestSubstringWrongSolution = function(s) {
     return Math.max(max, s.length - start);
 };
 
-document.getElementById("longest-substring-without-repeating-characters").innerHTML = lengthOfLongestSubstring("abba");
+class Queue {
+    constructor() {
+        this.elements = [];
+    }
+
+    enqueue(e) {
+        this.elements.push(e);
+    }
+
+    dequeue() {
+        return this.elements.shift();
+    }
+
+    isEmpty() {
+        return this.elements.length === 0;
+    }
+}
+
+// document.getElementById("longest-substring-without-repeating-characters").innerHTML = lengthOfLongestSubstring("abba");
+document.getElementById("longest-substring-without-repeating-characters").innerHTML = lengthOfLongestSubstring("abcabcbade");
+

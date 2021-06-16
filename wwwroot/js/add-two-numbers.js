@@ -85,9 +85,9 @@ const createList = function(array) {
 };
 
 let list1 = createList([9, 9, 9, 9, 9, 9, 9]);
-console.log(traverseListNode(list1));
+// console.log(traverseListNode(list1));
 
 let list2 = createList([9, 9, 9, 9]);
-console.log(traverseListNode(list2));
+// console.log(traverseListNode(list2));
 
 document.getElementById("add-two-numbers").innerHTML = traverseListNode(addTwoNumbers(list1, list2));
