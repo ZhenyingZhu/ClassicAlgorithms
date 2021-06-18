@@ -30,6 +30,7 @@ const addTwoNumbers = function(l1, l2) {
         prev.next = curr;
         prev = curr;
 
+        console.log(val);
         val = Math.floor(val / 10);
     }
 
@@ -41,6 +42,7 @@ const addTwoNumbers = function(l1, l2) {
         prev.next = curr;
         prev = curr;
 
+        console.log(val);
         val = Math.floor(val / 10);
     }
 
@@ -52,6 +54,7 @@ const addTwoNumbers = function(l1, l2) {
         prev.next = curr;
         prev = curr;
 
+        console.log(val);
         val = Math.floor(val / 10);
     }
 
@@ -64,12 +67,16 @@ const traverseListNode = function(node) {
         val += node.val + "->";
         node = node.next;
     }
+
+    return val;
 }
 
+// 2->4->3
 let node13 = new ListNode(3, null);
 let node12 = new ListNode(4, node13);
 let node11 = new ListNode(2, node12);
 
+// 5->6->4
 let node23 = new ListNode(4, null);
 let node22 = new ListNode(6, node23);
 let node21 = new ListNode(5, node22);
