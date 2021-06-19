@@ -30,7 +30,6 @@ const addTwoNumbers = function(l1, l2) {
         prev.next = curr;
         prev = curr;
 
-        console.log(val);
         val = Math.floor(val / 10);
     }
 
@@ -42,7 +41,6 @@ const addTwoNumbers = function(l1, l2) {
         prev.next = curr;
         prev = curr;
 
-        console.log(val);
         val = Math.floor(val / 10);
     }
 
@@ -54,8 +52,12 @@ const addTwoNumbers = function(l1, l2) {
         prev.next = curr;
         prev = curr;
 
-        console.log(val);
         val = Math.floor(val / 10);
+    }
+
+    if (val !== 0) {
+        let curr = new ListNode(val, null);
+        prev.next = curr;
     }
 
     return dummy.next;
@@ -71,14 +73,21 @@ const traverseListNode = function(node) {
     return val;
 }
 
-// 2->4->3
-let node13 = new ListNode(3, null);
-let node12 = new ListNode(4, node13);
-let node11 = new ListNode(2, node12);
+const createList = function(array) {
+    var next = null;
+    var curr = null;
+    for (let i = array.length - 1; i >= 0; i--) {
+        curr = new ListNode(array[i], next);
+        next = curr;
+    }
 
-// 5->6->4
-let node23 = new ListNode(4, null);
-let node22 = new ListNode(6, node23);
-let node21 = new ListNode(5, node22);
+    return curr;
+};
 
-document.getElementById("add-two-numbers").innerHTML = traverseListNode(addTwoNumbers(node11, node21));
+let list1 = createList([9, 9, 9, 9, 9, 9, 9]);
+console.log(traverseListNode(list1));
+
+let list2 = createList([9, 9, 9, 9]);
+console.log(traverseListNode(list2));
+
+document.getElementById("add-two-numbers").innerHTML = traverseListNode(addTwoNumbers(list1, list2));
