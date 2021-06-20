@@ -45,6 +45,7 @@ const lengthOfLongestSubstringWrongSolution = function(s) {
     return Math.max(max, s.length - start);
 };
 
+// can also wrote function Queue, and use Prototype to set its functions. See https://www.javascripttutorial.net/javascript-queue/
 class Queue {
     constructor() {
         this.elements = [];
