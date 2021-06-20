@@ -1,5 +1,9 @@
- var lengthOfLongestSubstring = function(s) {
+const lengthOfLongestSubstring = function(s) {
+};
+
+const lengthOfLongestSubstringWrongSolution = function(s) {
     // a map record when a char is last seen. So if hit it again, move back to there.
+    // why is it wrong because for "abba", if a hit, "bba" is not the solution.
     let map = new Map();
 
     let start = 0;
