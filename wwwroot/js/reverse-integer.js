@@ -1,1 +1,5 @@
-let s = "reverse-integer";
+const reverse = function(x) {
+    
+};
+
+document.getElementById("reverse-integer").innerHTML = reverse(10);
