@@ -1,10 +1,10 @@
-package algorithms.arrandstring; 
+package algorithms.arrandstring;
 
-import java.util.*; 
+import java.util.*;
 
 public class CombinationSum {
-    /* Function: Given an array and a target, find all solutions to sum up to target. 
-     * Solution: DFS. Notice when target < 0, can return. 
+    /* Function: Given an array and a target, find all solutions to sum up to target.
+     * Solution: DFS. Notice when target < 0, can return.
      */ 
     
     public List<List<Integer>> combinationSum2(int[] num, int target) {
