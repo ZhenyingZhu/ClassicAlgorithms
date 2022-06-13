@@ -5,8 +5,12 @@ namespace Algorithms
 {
     /// <summary>
     /// Whether all the chars in a string are unique.
-    /// CC189 6th 1.1
+    /// Uncertainties:
+    /// 1. string use what encoding?
     /// </summary>
+    /// <remarks>
+    /// CC189 6th 1.1
+    /// </remarks>
     public class AllCharsUnique
     {
         // Solution 1: two for loops compare each char with another. Time complexity: O(n^2).
