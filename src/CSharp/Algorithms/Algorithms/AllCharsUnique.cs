@@ -9,9 +9,9 @@ namespace Algorithms
     /// </summary>
     public class AllCharsUnique
     {
-        // Solution 1: two for loops compare each char with another.
+        // Solution 1: two for loops compare each char with another. Time complexity: O(n^2).
 
-        // Solution 2: Use hash set.
+        // Solution 2: Use hash set. Time complexity: O(n).
         public static bool IsUniqueHashSet(string input)
         {
             HashSet<char> appearedChars = new HashSet<char>();
@@ -28,7 +28,7 @@ namespace Algorithms
             return true;
         }
 
-        // Solution 3: when input is ASCII, use a bool array.
+        // Solution 3: when input is ASCII, use a bool array. Time Complexity: O(n).
         public static bool IsUniqueBoolArray(string input)
         {
             if (input.Length > 128)
@@ -50,7 +50,7 @@ namespace Algorithms
             return true;
         }
 
-        // Solution 4: when input is ASCII alphabet and numbers, use int.
+        // Solution 4: when input is ASCII alphabet and numbers, use int. Time Complexity: O(n).
         public static bool IsUniqueInt(string input)
         {
             if (input.Length > 128)
