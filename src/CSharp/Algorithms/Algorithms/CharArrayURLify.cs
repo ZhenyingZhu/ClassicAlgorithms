@@ -6,6 +6,8 @@ namespace Algorithms
 {
     /// <summary>
     /// Replace space with %20 in place.
+    /// Uncertainties:
+    /// 1. Could the length larger than array size?
     /// </summary>
     /// <remarks>
     /// CC189 6th 1.3
