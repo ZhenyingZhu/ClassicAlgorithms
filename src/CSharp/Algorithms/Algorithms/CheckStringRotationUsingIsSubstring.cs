@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Algorithms
@@ -16,10 +17,15 @@ namespace Algorithms
         // Solution 1: not too many solutions. Just repeat the string twice and check if the other one is a substring.
         public static bool StringRotation(string str1, string str2)
         {
+            if (str1 == null || str2 == null || str1.Length != str2.Length)
+            {
+                return false;
+            }
 
+            return IsSubstring(str1 + str1, str2);
         }
 
-        private static bool IsSubstring(string super, string sub)
+        public static bool IsSubstring(string super, string sub)
         {
             // Use DP.
             if (super == null)
@@ -39,22 +45,61 @@ namespace Algorithms
             }
 
             bool[][] isSub = new bool[m + 1][];
-            for (int i = m; i >=0; i--)
+            isSub[m] = new bool[n + 1];
+            isSub[m][n] = true;
+            isSub[m][n - 1] = false;
+
+            for (int i = m - 1; i >= 0; i--)
             {
                 isSub[i] = new bool[n + 1];
-                for (int j = n; j >=0; j--)
+                isSub[i][n] = true;
+                for (int j = n - 1; j >= 0; j--)
                 {
-                    if (i == m)
-                    {
-                        isSub[i][j] = true;
-                    }
-
                     if (super[i] == sub[j])
                     {
-                        isSub[i][j] = (i == m - 1) || (j == n - 1) || isSub[i + 1][j + 1];
+                        if (i + 1 == m || j + 1 == n)
+                        {
+                            isSub[i][j] = true;
+                        }
+                        else
+                        {
+                            // Still not completely right. If the current char is same, it can still not be the continious substring.
+                            isSub[i][j] = super[i + 1] == sub[j + 1] && isSub[i + 1][j + 1];
+                        }
+                    }
+                    else if (m - i <= n - j)
+                    {
+                        // The super str is same or short than sub
+                        isSub[i][j] = false;
+                    }
+                    else
+                    {
+                        isSub[i][j] = isSub[i + 1][j];
                     }
                 }
             }
+
+            using (StreamWriter file = new StreamWriter("WriteLines2.txt"))
+            {
+                for (int i = 0; i <= m; i++)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    for (int j = 0; j <= n; j++)
+                    {
+                        if (isSub[i][j])
+                        {
+                            sb.Append('T');
+                        }
+                        else
+                        {
+                            sb.Append('F');
+                        }
+                    }
+                    file.WriteLine(sb.ToString());
+                }
+            }
+
+            return isSub[0][0];
         }
     }
 }
