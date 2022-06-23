@@ -44,62 +44,68 @@ namespace Algorithms
                 return false;
             }
 
-            bool[][] isSub = new bool[m + 1][];
-            isSub[m] = new bool[n + 1];
-            isSub[m][n] = true;
-            isSub[m][n - 1] = false;
+            // 0: is not subString
+            // 1: is substring, and same chars so far
+            // 2: is substring, but not same chars
+            int[][] isSub = new int[m + 1][];
+            isSub[m] = new int[n + 1];
+            isSub[m][n] = 1;
+            isSub[m][n - 1] = 0;
 
             for (int i = m - 1; i >= 0; i--)
             {
-                isSub[i] = new bool[n + 1];
-                isSub[i][n] = true;
+                isSub[i] = new int[n + 1];
+                isSub[i][n] = 1;
                 for (int j = n - 1; j >= 0; j--)
                 {
-                    if (super[i] == sub[j])
+                    if (m - i <= n - j)
                     {
-                        if (i + 1 == m || j + 1 == n)
+                        // The super str is same or short than sub
+                        isSub[i][j] = 0;
+
+                        // No need to loop further. Previous cells are not in use.
+                        continue;
+                    }
+                    else if (super[i] != sub[j])
+                    {
+                        if (isSub[i + 1][j] >= 1)
                         {
-                            isSub[i][j] = true;
+                            isSub[i][j] = 2;
                         }
                         else
                         {
-                            // Still not completely right. If the current char is same, it can still not be the continious substring.
-                            isSub[i][j] = super[i + 1] == sub[j + 1] && isSub[i + 1][j + 1];
+                            isSub[i][j] = 0;
                         }
-                    }
-                    else if (m - i <= n - j)
-                    {
-                        // The super str is same or short than sub
-                        isSub[i][j] = false;
                     }
                     else
                     {
-                        isSub[i][j] = isSub[i + 1][j];
-                    }
-                }
-            }
-
-            using (StreamWriter file = new StreamWriter("WriteLines2.txt"))
-            {
-                for (int i = 0; i <= m; i++)
-                {
-                    StringBuilder sb = new StringBuilder();
-                    for (int j = 0; j <= n; j++)
-                    {
-                        if (isSub[i][j])
+                        if (isSub[i + 1][j + 1] == 1)
                         {
-                            sb.Append('T');
+                            isSub[i][j] = 1;
+                        }
+                        else if (isSub[i + 1][j] >= 1)
+                        {
+                            isSub[i][j] = 2;
                         }
                         else
                         {
-                            sb.Append('F');
+                            isSub[i][j] = 0;
                         }
                     }
-                    file.WriteLine(sb.ToString());
                 }
             }
 
-            return isSub[0][0];
+            /** For debugging purpose.
+            using (StreamWriter file = new StreamWriter("IsSubstring.txt"))
+            {
+                for (int i = 0; i <= m; i++)
+                {
+                    file.WriteLine(string.Join(string.Empty, isSub[i]));
+                }
+            }
+            **/
+
+            return isSub[0][0] >= 1;
         }
     }
 }
