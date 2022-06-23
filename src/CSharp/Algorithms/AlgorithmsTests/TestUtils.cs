@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Algorithms.Utils;
 
 namespace AlgorithmsTests
 {
@@ -34,6 +35,19 @@ namespace AlgorithmsTests
                     Assert.AreEqual(matrix1[i][j], matrix2[i][j]);
                 }
             }
+        }
+
+        internal static void CompareSinglyLinkedLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2)
+        {
+            while (head1 != null && head2 != null)
+            {
+                Assert.AreEqual(head1.Data, head2.Data);
+                head1 = head1.Next;
+                head2 = head2.Next;
+            }
+
+            Assert.IsNull(head1);
+            Assert.IsNull(head2);
         }
     }
 }
