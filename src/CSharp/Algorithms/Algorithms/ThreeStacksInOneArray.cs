@@ -15,6 +15,8 @@ namespace Algorithms
     {
         List<T> list;
 
+        // Solution 1: divide the array into 3 equal size pieces.
+        // Solution 2: one stack exceed its cap, shift elements and give it more spaces
         public ThreeStacksInOneArray()
         {
             list = new List<T>(30);
