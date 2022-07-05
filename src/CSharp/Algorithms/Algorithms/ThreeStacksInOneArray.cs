@@ -13,12 +13,12 @@ namespace Algorithms
     /// </remarks>
     public class ThreeStacksInOneArray<T>
     {
-        T[] array;
-        StackInfo[] infos;
-        int totalVol = 0;
+        private T[] array;
+        private StackInfo[] infos;
+        private int totalVol = 0;
 
         // Solution 1: divide the array into 3 equal size pieces.
-        // Solution 2: one stack exceed its cap, shift elements and give it more spaces
+        // Solution 2: when one stack exceed its cap, shift elements and give it more spaces
         public ThreeStacksInOneArray(int stackCap = 2, int stackNum = 3)
         {
             if (stackCap <= 1 || stackNum <= 2)
@@ -53,7 +53,7 @@ namespace Algorithms
             }
 
             StackInfo info = infos[stackId];
-            return array[info.EndIdx];
+            return array[(info.EndIdx + array.Length - 1) % array.Length];
         }
 
         public T Pop(int stackId)
@@ -61,11 +61,7 @@ namespace Algorithms
             T res = this.Peek(stackId);
 
             StackInfo info = infos[stackId];
-            int endIdx = info.EndIdx - 1;
-            if (endIdx < 0)
-            {
-                info.EndIdx = array.Length + endIdx;
-            }
+            info.EndIdx = (info.EndIdx - 1 + array.Length) % array.Length;
 
             totalVol--;
 
@@ -87,7 +83,8 @@ namespace Algorithms
             this.AllocateSpace(stackId);
             StackInfo info = this.infos[stackId];
             array[info.EndIdx] = val;
-            info.EndIdx = info.EndIdx + 1 % array.Length;
+            info.EndIdx = (info.EndIdx + 1) % array.Length;
+
             totalVol++;
         }
 
@@ -96,22 +93,30 @@ namespace Algorithms
             StackInfo curInfo = infos[stackId];
             int nextIdx = (stackId + 1) % infos.Length;
             StackInfo nextInfo = infos[nextIdx];
-            if (curInfo.EndIdx < nextInfo.StartIdx)
-            {
-                return;
-            }
-            else if (curInfo.EndIdx == nextInfo.StartIdx)
+            if (curInfo.EndIdx == nextInfo.StartIdx)
             {
                 this.AllocateSpace(nextIdx);
                 this.ShiftByOne(nextIdx);
+            }
+            else
+            {
+                return;
             }
         }
 
         private void ShiftByOne(int stackId)
         {
             StackInfo info = infos[stackId];
+            int startIdx = info.StartIdx;
+            int endIdx = info.EndIdx >= startIdx ? info.EndIdx : info.EndIdx + array.Length;
 
-            // TODO
+            for (int i = endIdx - 1; i >= info.StartIdx; i--)
+            {
+                int nextIdx = (i + 1) % array.Length;
+                array[nextIdx] = array[i];
+            }
+            info.EndIdx = (info.EndIdx + 1) % array.Length;
+            info.StartIdx = (info.StartIdx + 1) % array.Length;
         }
 
         private class StackInfo
