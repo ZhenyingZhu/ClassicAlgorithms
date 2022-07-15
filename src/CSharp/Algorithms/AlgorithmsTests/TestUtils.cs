@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using Algorithms.Utils;
 
 namespace AlgorithmsTests
@@ -48,6 +49,31 @@ namespace AlgorithmsTests
 
             Assert.IsNull(head1);
             Assert.IsNull(head2);
+        }
+
+        internal static void CompareInOrderTraverse(BinaryTree binaryTree, List<int> result)
+        {
+            List<int> inOrder = new List<int>();
+            InOrderTraverse(binaryTree.Root, inOrder);
+            for (int i = 0; i < inOrder.Count; i++)
+            {
+                Assert.AreEqual(inOrder[i], result[i]);
+            }
+        }
+
+        private static void InOrderTraverse(BinaryTreeNode node, List<int> res)
+        {
+            if (node.LeftChild != null)
+            {
+                InOrderTraverse(node.LeftChild, res);
+            }
+
+            res.Add(node.Id);
+
+            if (node.RightChild != null)
+            {
+                InOrderTraverse(node.RightChild, res);
+            }
         }
     }
 }
