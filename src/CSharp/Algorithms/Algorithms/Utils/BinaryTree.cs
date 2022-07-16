@@ -36,7 +36,7 @@ namespace Algorithms.Utils
             {
                 if (inOrder[i] == preOrder[preSt])
                 {
-                    int len = i - inSt + 1;
+                    int len = i - inSt;
 
                     BinaryTreeNode left = CreateTree(preOrder, preSt + 1, preSt + len, inOrder, inSt, i - 1);
                     BinaryTreeNode right = CreateTree(preOrder, preSt + len + 1, preEd, inOrder, i + 1, inEd);

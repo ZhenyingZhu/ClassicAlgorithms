@@ -75,5 +75,30 @@ namespace AlgorithmsTests
                 InOrderTraverse(node.RightChild, res);
             }
         }
+
+        internal static void ComparePreOrderTraverse(BinaryTree binaryTree, List<int> result)
+        {
+            List<int> preOrder = new List<int>();
+            PreOrderTraverse(binaryTree.Root, preOrder);
+            for (int i = 0; i < preOrder.Count; i++)
+            {
+                Assert.AreEqual(preOrder[i], result[i]);
+            }
+        }
+
+        private static void PreOrderTraverse(BinaryTreeNode node, List<int> res)
+        {
+            res.Add(node.Id);
+
+            if (node.LeftChild != null)
+            {
+                PreOrderTraverse(node.LeftChild, res);
+            }
+
+            if (node.RightChild != null)
+            {
+                PreOrderTraverse(node.RightChild, res);
+            }
+        }
     }
 }
