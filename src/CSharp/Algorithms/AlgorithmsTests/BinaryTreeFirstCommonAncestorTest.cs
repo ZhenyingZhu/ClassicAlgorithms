@@ -25,5 +25,18 @@ namespace AlgorithmsTests
             TestUtils.ComparePreOrderTraverse(tree, preOder.ToList());
             TestUtils.CompareInOrderTraverse(tree, inOrder.ToList());
         }
+
+        [TestMethod]
+        public void TestFirstCommonAncestor()
+        {
+            int[] preOder = new int[] { 1, 2, 4, 5, 3 }, inOrder = new int[] { 4, 2, 5, 1, 3 };
+            BinaryTree tree = BinaryTree.GenerateBinaryTree(preOder, inOrder);
+
+            BinaryTreeNode node2 = tree.GetNodeById(2);
+            BinaryTreeNode node4 = tree.GetNodeById(4);
+            BinaryTreeNode node5 = tree.GetNodeById(5);
+            Assert.AreEqual(node2, BinaryTreeFirstCommonAncestor.FirstCommonAncestor(tree, node4, node5));
+            Assert.AreEqual(node2, BinaryTreeFirstCommonAncestor.FirstCommonAncestor(tree, node2, node5));
+        }
     }
 }

@@ -8,6 +8,29 @@ namespace Algorithms.Utils
     {
         public BinaryTreeNode Root { get; set; }
 
+        private Dictionary<int, BinaryTreeNode> idToNode = new Dictionary<int, BinaryTreeNode>();
+
+        public BinaryTreeNode GetNodeById(int id)
+        {
+            if (this.idToNode.ContainsKey(id))
+            {
+                return this.idToNode[id];
+            }
+
+            return null;
+        }
+
+        private bool AddNode(BinaryTreeNode node)
+        {
+            if (this.idToNode.ContainsKey(node.Id))
+            {
+                return false;
+            }
+
+            this.idToNode.Add(node.Id, node);
+            return true;
+        }
+
         public static BinaryTree GenerateBinaryTree(int[] preOrder, int[] inOrder)
         {
             if (preOrder == null || inOrder == null || preOrder.Length != inOrder.Length)
@@ -15,11 +38,14 @@ namespace Algorithms.Utils
                 throw new ArgumentException("Wrong input");
             }
 
-            BinaryTreeNode root = CreateTree(preOrder, 0, preOrder.Length - 1, inOrder, 0, inOrder.Length - 1);
-            return new BinaryTree { Root = root };
+            BinaryTree tree = new BinaryTree();
+            BinaryTreeNode root = CreateTree(tree, preOrder, 0, preOrder.Length - 1, inOrder, 0, inOrder.Length - 1);
+            tree.Root = root;
+            return tree;
         }
 
-        private static BinaryTreeNode CreateTree(int[] preOrder, int preSt, int preEd, int[] inOrder, int inSt, int inEd)
+        private static BinaryTreeNode CreateTree(
+            BinaryTree tree, int[] preOrder, int preSt, int preEd, int[] inOrder, int inSt, int inEd)
         {
             if (preSt > preEd)
             {
@@ -27,6 +53,8 @@ namespace Algorithms.Utils
             }
 
             BinaryTreeNode root = new BinaryTreeNode(preOrder[preSt]);
+            tree.AddNode(root);
+
             if (preSt == preEd)
             {
                 return root;
@@ -38,8 +66,8 @@ namespace Algorithms.Utils
                 {
                     int len = i - inSt;
 
-                    BinaryTreeNode left = CreateTree(preOrder, preSt + 1, preSt + len, inOrder, inSt, i - 1);
-                    BinaryTreeNode right = CreateTree(preOrder, preSt + len + 1, preEd, inOrder, i + 1, inEd);
+                    BinaryTreeNode left = CreateTree(tree, preOrder, preSt + 1, preSt + len, inOrder, inSt, i - 1);
+                    BinaryTreeNode right = CreateTree(tree, preOrder, preSt + len + 1, preEd, inOrder, i + 1, inEd);
                     root.LeftChild = left;
                     root.RightChild = right;
                     return root;
