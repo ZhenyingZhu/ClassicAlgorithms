@@ -14,6 +14,9 @@ namespace Algorithms
     /// </remarks>
     public class BSTSupportsRandomNode
     {
-        // Solution 1: know how many nodes in total. Each node tracks the order in the tree. Return the nth node.
+        // Solution 1: know how many nodes in total. Each node tracks the order in the tree. Return the nth node. But delete needs O(n)
+        // Support insert, delete, getRandom node.
+
+        // Solution 2: Each node keep track of the node counts of its left and right tree, so know the odd where to do.
     }
 }
