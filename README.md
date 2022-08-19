@@ -1,9 +1,9 @@
 ClassicAlgorithms
 =================
 
-Implement classic algorithms and useful functions in Java. 
+Implement classic algorithms and useful functions in Java.
 
-Categories: 
+Categories:
 ------------
 <b>Array and string</b>: Dealing with the arrays or strings. <br>
 <b>Bit manipulate</b>: Solving the problems by manipulate bits. <br>
