@@ -13,6 +13,6 @@ namespace Algorithms
     /// </remarks>
     public class FactorialTrailingZeroCounts
     {
-        // Solution 1: 
+        // Solution 1: Count 5 and 10s.25=5^2 needs to be count as 2.
     }
 }
