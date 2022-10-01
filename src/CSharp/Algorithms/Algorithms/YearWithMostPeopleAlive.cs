@@ -15,5 +15,6 @@ namespace Algorithms
     public class YearWithMostPeopleAlive
     {
         // Solution 1: Sort the array by birth year, and use sliding window.
+        // Solution 2: increase a count when a person born, and decrease when dead, so no need to sort the array.
     }
 }
