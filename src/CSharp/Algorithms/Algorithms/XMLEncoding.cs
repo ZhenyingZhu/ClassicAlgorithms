@@ -12,6 +12,6 @@ namespace Algorithms
     /// </remarks>
     public class XMLEncoding
     {
-        // Solution 1:
+        // Solution 1: First encoding tags, then add a '0', then encoding the values.
     }
 }
