@@ -14,6 +14,6 @@ namespace Algorithms
     public class PatternMatch
     {
         // Solution 1: Check each substring and try match a and b.
-        // Solution 2: 
+        // Solution 2: gets all the "a"s from pattern, when matching a, predict b so no need to go over each substring for b.
     }
 }
