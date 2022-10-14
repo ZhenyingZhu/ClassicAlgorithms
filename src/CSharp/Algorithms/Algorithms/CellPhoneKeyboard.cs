@@ -15,5 +15,6 @@ namespace Algorithms
     public class CellPhoneKeyboard
     {
         // Solution 1: Build a trie tree of the words.
+        // SOlution 2: pre-compute the valid words to the num seq in a hashset.
     }
 }
