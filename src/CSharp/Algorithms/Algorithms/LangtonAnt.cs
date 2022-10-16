@@ -15,5 +15,7 @@ namespace Algorithms
     /// </remarks>
     public class LangtonAnt
     {
+        // Solution 1: use an resizeable array to store only a certain range of squares.
+        // Solution 2: use a HashSet to record white squares.
     }
 }
