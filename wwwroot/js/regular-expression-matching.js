@@ -4,20 +4,27 @@
  * @return {boolean}
  */
 const isMatch = function(s, p) {
+    // Solution: when see *, need to match multiple possibles.
     let i = 0;
     let j = 0;
-    let k = s.length + 1; // init with an invalid value
+    let k = p.length; // the end of the string so the while look could exit
 
-    while (j < p.length - 1) {
-        if (p[j + 1] === '*') {
-            k = i; // to return
-
+    while (j < p.length) {
+        if (j < p.length - 1 && p[j + 1] === '*') {
+            k = j; // to return
+            j = k + 2;
         }
-        else if (s[i] === p[j] && p[j] === '.') {
+        else if (s[i] === p[j] || p[j] === '.') {
             i++;
             j++;
-        } else if (p[j] === '.') {
-
+        } else if (k !== p.length) {
+            j = k;
+            if (s[i] === p[j] || p[j] === '.') {
+                i++;
+            }
+            else {
+                break;
+            }
         }
     }
 
@@ -25,4 +32,4 @@ const isMatch = function(s, p) {
 };
 
 
-document.getElementById("regular-expression-matching").innerHTML = isMatch("aa", "a");
+document.getElementById("regular-expression-matching").innerHTML = isMatch("abbc", "a*b*c");
