@@ -4,9 +4,9 @@ const longestPalindrome = function(s) {
     }
 
     // Use DP.
-    let metrix = new Array(s.length + 1);
+    let matrix = new Array(s.length + 1);
     for (let i = 0; i < s.length; i++) {
-        metrix[i] = new Array(s.length);
+        matrix[i] = new Array(s.length);
     }
 
     let st = 0;
@@ -20,12 +20,12 @@ const longestPalindrome = function(s) {
                 val = (s[j] === s[j + 1] ? true : false);
             }
             else {
-                let prev = metrix[j + 1][j + i - 1];
+                let prev = matrix[j + 1][j + i - 1];
                 val = (s[j] === s[j + i] ? prev : false);
             }
 
             // console.log("j: " + j + " j+i: " + (j + i) + " val: " + val);
-            metrix[j][j + i] = val;
+            matrix[j][j + i] = val;
 
             if (val && i + 1 > len) {
                 st = j;

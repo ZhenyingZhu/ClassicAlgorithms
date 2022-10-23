@@ -3,10 +3,17 @@
  * @param {string} p
  * @return {boolean}
  */
-const isMatch = function(s, p) {
-    // Solution: when see *, need to match multiple possibles.
-    // edge cases:
-    // abcabc, .*abc
+const isMatchDP = function(s, p) {
+    // Solution:
+    if (p === ".*") {
+        return true;
+    }
+
+    
+};
+
+const isMatchJumpBackWrong = function(s, p) {
+    // Solution: when see *, need to match multiple possibles. Use a pointer k to go back.
     let i = 0;
     let j = 0;
     let k = p.length; // the end of the string so the while look could exit
@@ -32,6 +39,5 @@ const isMatch = function(s, p) {
 
     return (i === s.length && j === p.length);
 };
-
 
 document.getElementById("regular-expression-matching").innerHTML = isMatch("abbc", "a*b*c");
