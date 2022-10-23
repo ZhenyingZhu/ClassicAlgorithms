@@ -5,6 +5,8 @@
  */
 const isMatch = function(s, p) {
     // Solution: when see *, need to match multiple possibles.
+    // edge cases:
+    // abcabc, .*abc
     let i = 0;
     let j = 0;
     let k = p.length; // the end of the string so the while look could exit
