@@ -4,7 +4,9 @@
  * @return {boolean}
  */
 const isMatchDP = function(s, p) {
-    // Solution:
+    // Solution: m[i][j] indicates s(0, i) matches p(0, j).
+    // m[i][j] = m[i-1][j-1] && (s[i] == p[j] || p[j] == '.') ||
+    //   p[j] == '*' && for k in (0, i), any (m[k][j-2] && s[k + 1] to s[i] == p[j - 1] || p[j - 1] == '.')
     if (p === ".*") {
         return true;
     }
