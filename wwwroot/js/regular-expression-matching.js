@@ -19,14 +19,20 @@ const isMatchDP = function(s, p) {
     for (let i = 0; i < s.length; i++) {
         for (let j = 0; j < p.length; j++) {
             if (s[i] === p[j] || p[j] === '.') {
-                if (i === 0) {
-                    if (j === 0) {
-                        match[i][j] = true;
-                    } else {
-                        match[i][j] = match[i][j - 1];
-                    }
+                if (i === 0 && j === 0) {
+                    match[i][j] = true;
                 } else if (j === 0) {
-                    
+                    if (p[j] === '*') {
+                        // invalid case
+                        console.log("Error case");
+                        return false;
+                    } else {
+                        match[i][j] = false;
+                    }
+                } else if (i === 0) {
+                    match[i][j] = match[i][j - 1];
+                } else {
+
                 }
             }
         }
