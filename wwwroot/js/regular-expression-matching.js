@@ -11,32 +11,55 @@ const isMatchDP = function(s, p) {
         return true;
     }
 
-    let match = new Array(s.length);
-    for (let i = 0; i < s.length; i++) {
-        match[i] = new Array(p.length);
+    let match = new Array(s.length + 1);
+    for (let i = 0; i < match.length; i++) {
+        match[i] = new Array(p.length + 1);
+    }
+
+    match[0][0] = true;
+
+    for (let i = 1; i < match.length; i++) {
+        match[i][0] = false;
+    }
+
+    for (let j = 1; j < match[0].length; j++) {
+        match[0][j] = false;
     }
 
     for (let i = 0; i < s.length; i++) {
         for (let j = 0; j < p.length; j++) {
             if (s[i] === p[j] || p[j] === '.') {
-                if (i === 0 && j === 0) {
-                    match[i][j] = true;
-                } else if (j === 0) {
-                    if (p[j] === '*') {
-                        // invalid case
-                        console.log("Error case");
-                        return false;
-                    } else {
-                        match[i][j] = false;
-                    }
-                } else if (i === 0) {
-                    match[i][j] = match[i][j - 1];
-                } else {
+                match[i + 1][j + 1] = match[i][j];
+            } else if (p[j] === '*') {
+                if (j === 0) {
+                    console.log("Invalid pattern");
+                    return false;
+                }
 
+                match[i][j] = false;
+                for (let k = 0; k <= i + 1; k++) {
+                    if (!match[k][j - 1]) {
+                        continue;
+                    }
+
+                    let allMatch = true;
+                    for (let l = k; l <= i; l++) {
+                        if (s[l] !== p[j - 1] && p[j - 1] !== '.') {
+                            allMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (allMatch) {
+                        match[i][j] = true;
+                        break;
+                    }
                 }
             }
         }
     }
+
+    return match[s.length][p.length];
 };
 
 const isMatchJumpBackWrong = function(s, p) {
