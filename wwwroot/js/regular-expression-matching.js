@@ -36,7 +36,7 @@ const isMatchDP = function(s, p) {
                     return false;
                 }
 
-                match[i][j] = false;
+                match[i + 1][j + 1] = false;
                 for (let k = 0; k <= i + 1; k++) {
                     if (!match[k][j - 1]) {
                         continue;
@@ -51,10 +51,12 @@ const isMatchDP = function(s, p) {
                     }
 
                     if (allMatch) {
-                        match[i][j] = true;
+                        match[i + 1][j + 1] = true;
                         break;
                     }
                 }
+            } else {
+                match[i + 1][j + 1] = false;
             }
         }
     }
@@ -90,4 +92,4 @@ const isMatchJumpBackWrong = function(s, p) {
     return (i === s.length && j === p.length);
 };
 
-document.getElementById("regular-expression-matching").innerHTML = isMatch("abbc", "a*b*c");
+document.getElementById("regular-expression-matching").innerHTML = isMatchDP("bbc", "a*b*c");
