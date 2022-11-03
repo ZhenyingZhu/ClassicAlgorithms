@@ -23,6 +23,7 @@ const isMatchDP = function(s, p) {
     }
 
     for (let j = 1; j < match[0].length; j++) {
+        // this is not necessary
         match[0][j] = false;
     }
 
