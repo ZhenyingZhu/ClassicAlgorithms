@@ -23,8 +23,16 @@ const isMatchDP = function(s, p) {
     }
 
     for (let j = 1; j < match[0].length; j++) {
-        // this is not necessary
-        match[0][j] = false;
+        if (p[j - 1] === '*') {
+            if (j === 1) {
+                console.log("Invalid pattern");
+                return false;
+            }
+
+            match[0][j] = match[0][j - 2];
+        } else {
+            match[0][j] = false;
+        }
     }
 
     for (let i = 0; i < s.length; i++) {
@@ -32,11 +40,6 @@ const isMatchDP = function(s, p) {
             if (s[i] === p[j] || p[j] === '.') {
                 match[i + 1][j + 1] = match[i][j];
             } else if (p[j] === '*') {
-                if (j === 0) {
-                    console.log("Invalid pattern");
-                    return false;
-                }
-
                 match[i + 1][j + 1] = false;
                 for (let k = 0; k <= i + 1; k++) {
                     if (!match[k][j - 1]) {
