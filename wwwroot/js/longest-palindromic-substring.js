@@ -1,4 +1,8 @@
-const longestPalindrome = function(s) {
+/**
+ * @param {String} s
+ * @return {String}
+ */
+ const longestPalindrome = function(s) {
     if (s.length <= 1) {
         return s;
     }
