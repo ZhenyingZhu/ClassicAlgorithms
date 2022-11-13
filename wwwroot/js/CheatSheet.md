@@ -25,3 +25,7 @@ for (let i = 0; i < 10; i++) {}
 let array = [1, 2, 3];
 
 ```
+
+## String function
+
+- `s.length`
