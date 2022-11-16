@@ -29,3 +29,11 @@ let array = [1, 2, 3];
 ## String function
 
 - `s.length`
+
+## Array
+
+Sort int instead of string:
+
+```javascript
+nums.sort(function(a, b) { return a - b });
+```
