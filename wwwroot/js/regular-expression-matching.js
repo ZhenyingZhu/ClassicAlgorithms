@@ -25,7 +25,7 @@ const isMatchDP = function(s, p) {
     for (let j = 1; j < match[0].length; j++) {
         if (p[j - 1] === '*') {
             if (j === 1) {
-                console.log("Invalid pattern");
+                // console.log("Invalid pattern");
                 return false;
             }
 

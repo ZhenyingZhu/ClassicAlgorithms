@@ -1,5 +1,5 @@
 const isPalindromeDigit = function(x, n) {
-    console.log("x: " + x + ", n: " + n)
+    // console.log("x: " + x + ", n: " + n)
     if (x < 10 && n <= 1) {
         return true;
     }

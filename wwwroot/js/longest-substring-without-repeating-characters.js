@@ -32,7 +32,7 @@ const lengthOfLongestSubstringWrongSolution = function(s) {
         if (!map.has(s[i])) {
             map.set(s[i], i);
         } else {
-            console.log(s.substring(start, i));
+            // console.log(s.substring(start, i));
 
             max = Math.max(max, i - start);
             start = map.get(s[i]) + 1;
@@ -41,7 +41,7 @@ const lengthOfLongestSubstringWrongSolution = function(s) {
         }
     }
 
-    console.log(s.substring(start, s.length));
+    // console.log(s.substring(start, s.length));
     return Math.max(max, s.length - start);
 };
 

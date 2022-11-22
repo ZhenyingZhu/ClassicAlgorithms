@@ -8,7 +8,7 @@ var threeSum = function(nums) {
     }
 
     nums.sort(function(a, b) { return a - b });
-    console.log(nums);
+    // console.log(nums);
 
     let res = [];
 
@@ -18,15 +18,17 @@ var threeSum = function(nums) {
         }
 
         let target = -nums[i];
-        console.log("Target " + target);
+        // console.log("Target " + target);
 
         let st = i + 1;
         let ed = nums.length - 1;
         while (st < ed) {
-            console.log(nums[i] + " " + nums[st] + " " + nums[ed]);
+            // console.log(nums[i] + " " + nums[st] + " " + nums[ed]);
             if (nums[st] + nums[ed] === target) {
                 res.push([nums[i], nums[st], nums[ed]]);
-                st++;
+                do {
+                    st++;
+                } while (st < ed && nums[st] == nums[st - 1]);
             } else if (nums[st] + nums[ed] > target) {
                 ed--;
             } else {
@@ -39,3 +41,4 @@ var threeSum = function(nums) {
 };
 
 document.getElementById("3sum").innerHTML = threeSum([-1,0,1,2,-1,-4]);
+// document.getElementById("3sum").innerHTML = threeSum([0, 0, 0, 0]);
