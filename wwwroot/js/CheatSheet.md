@@ -23,8 +23,13 @@ for (let i = 0; i < 10; i++) {}
 
 ```javascript
 let array = [1, 2, 3];
-
 ```
+
+Int max: `Number.MAX_SAFE_INTEGER`
+
+## Int function
+
+`Math.min(a, b);`
 
 ## String function
 
