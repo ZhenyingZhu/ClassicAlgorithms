@@ -40,5 +40,5 @@ Int max: `Number.MAX_SAFE_INTEGER`
 Sort int instead of string:
 
 ```javascript
-nums.sort(function(a, b) { return a - b });
+nums.sort(function(a, b) { return a - b; });
 ```
