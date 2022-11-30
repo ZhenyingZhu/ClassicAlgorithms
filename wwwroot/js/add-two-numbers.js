@@ -1,9 +1,3 @@
-// Definition for singly-linked list.
-function ListNode(val, next) {
-    this.val = (val===undefined ? 0 : val)
-    this.next = (next===undefined ? null : next)
-}
-
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
@@ -61,27 +55,6 @@ const addTwoNumbers = function(l1, l2) {
     }
 
     return dummy.next;
-};
-
-const traverseListNode = function(node) {
-    val = "";
-    while (node != null) {
-        val += node.val + "->";
-        node = node.next;
-    }
-
-    return val;
-}
-
-const createList = function(array) {
-    var next = null;
-    var curr = null;
-    for (let i = array.length - 1; i >= 0; i--) {
-        curr = new ListNode(array[i], next);
-        next = curr;
-    }
-
-    return curr;
 };
 
 let list1 = createList([9, 9, 9, 9, 9, 9, 9]);
