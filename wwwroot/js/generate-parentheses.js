@@ -4,6 +4,10 @@
  */
 var generateParenthesis = function(n) {
     let array = [];
+    if (n <= 0) {
+        return array;
+    }
+
     let res = [];
     generatePar(array, 0, n, res);
     return res;
@@ -20,13 +24,13 @@ const generatePar = function(array, sum, n, res) {
         generatePar(array, n, n, res);
         array.pop();
     } else {
-        for (let i = 0; i < array.length + 1 - sum; i++) {
+        for (let i = 0; i < array.length + 2 - sum; i++) {
             array.push(i);
             generatePar(array, sum + i, n, res);
             array.pop();
         }
     }
-}
+};
 
 const generateParStr = function(array) {
     let str = "";
@@ -38,6 +42,6 @@ const generateParStr = function(array) {
     }
 
     return str;
-}
+};
 
 document.getElementById("generate-parentheses").innerHTML = generateParenthesis(3);
