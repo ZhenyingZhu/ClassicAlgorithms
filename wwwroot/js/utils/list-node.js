@@ -6,7 +6,9 @@ function ListNode(val, next) {
 
 const traverseListNode = function(node) {
     val = "";
-    while (node != null) {
+    let cycle = 0;
+    while (node != null && cycle < 100) {
+        cycle++;
         val += node.val + "->";
         node = node.next;
     }
