@@ -36,6 +36,7 @@ var reverseKGroup = function(head, k) {
 
         pre.next = reverseKNodes(cur, k);
         pre = cur;
+        cur.next = next;
         cur = next;
     }
 
@@ -45,15 +46,15 @@ var reverseKGroup = function(head, k) {
 const reverseKNodes = function(node, k) {
     let pre = node;
     let cur = node.next;
-    //pre.next = null;
-    for (let i = 0; i < k; i++) {
+    pre.next = null;
+    for (let i = 0; i < k - 1; i++) {
         let next = cur.next;
         cur.next = pre;
         pre = cur;
         cur = next;
     }
 
-    return cur;
+    return pre;
 };
 
-document.getElementById("reverse-nodes-in-k-group").innerHTML = traverseListNode(reverseKNodes(createList([1,2,3,4,5,6,7,8]), 2));
+document.getElementById("reverse-nodes-in-k-group").innerHTML = traverseListNode(reverseKGroup(createList([1,2,3,4,5,6,7,8,9]), 3));
