@@ -42,3 +42,7 @@ Sort int instead of string:
 ```javascript
 nums.sort(function(a, b) { return a - b; });
 ```
+
+## Deep copy
+
+`JSON.parse(JSON.stringify(dict));`
