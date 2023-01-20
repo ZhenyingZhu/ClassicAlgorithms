@@ -25,16 +25,44 @@ var findSubstring = function(s, words) {
         }
     }
 
+    for (let i = 0; i <= s.length - wordLen * words.length; i++) {
+        if (res.includes(i)) {
+            continue;
+        }
 
-    for (let i = 0; i < s.length - wordLen * words.length; i++) {
-
+        slidingWindow(s, i, wordLen, words.length, JSON.parse(JSON.stringify(dict)), res);
     }
 
     return res;
 };
 
-const slidingWindow = function(s, st, ) {
+const slidingWindow = function(s, st, wordLen, totalWords, dict, res) {
+    let cur = st;
+    let begin = st;
+    while (cur <= s.length - wordLen) {
+        let sub = s.substring(cur, cur + wordLen);
+        if (dict[sub] === undefined || dict[sub] === 0) {
+            return;
+        }
+
+        dict[sub]--;
+        totalWords--;
+
+        if (totalWords === 0) {
+            res.push(begin);
+
+            let addBack = s.substring(begin, begin + wordLen);
+            begin += wordLen;
+            dict[addBack]++;
+            totalWords++;
+        }
+
+        cur += wordLen;
+    }
 };
 
 document.getElementById("substring-with-concatenation-of-all-words").innerHTML =
-    findSubstring("barfoothefoobarman", ["foo","bar", "foo"]);
+    //findSubstring("barfoothefoobarman", ["foo","bar"]);
+    //findSubstring("wordgoodgoodgoodbestword", ["word","good","best","word"]);
+    //findSubstring("barfoofoobarthefoobarman", ["bar","foo","the"]);
+    findSubstring("wordgoodgoodgoodbestword", ["word","good","best","good"]);
