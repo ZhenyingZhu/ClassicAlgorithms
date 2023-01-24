@@ -3,7 +3,7 @@
  * @return {number}
  */
 var longestValidParentheses = function(s) {
-    // Use DP. d[j] = i means s[i, j] has unclosed left parentheses.
+    // Use DP. d[j] = i means the length of the longest valid parentheses closed at s[j].
     // d[j] = 1. if s[j] = ), from 0 to j - 1, d[]
 
 };
