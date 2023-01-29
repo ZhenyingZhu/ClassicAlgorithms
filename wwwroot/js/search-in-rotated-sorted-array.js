@@ -1,34 +1,59 @@
 /**
- * @param {string} s
+ * @param {number[]} nums
+ * @param {number} target
  * @return {number}
  */
-var longestValidParentheses = function(s) {
-    // Solution 1:
-    // Use DP. d[j] = i means the length of the longest valid parentheses closed at s[j].
-    // init: d[0] = 0 matching s[-1]
-    // if s[i] = '(', d[i+1] = 0;
-    // if s[i] = ')', if s[i-1] = '(', d[i+1] = d[i-1] + 2
-    //                if s[j-1] = ')', using d[j] we can find the first '(' matches s[j-1]. If the previous char is '(', then d[j] = d[j-1-d[j-1]] + 2
-    let res = 0;
-    let d = new Array(s.length + 1);
-    d[0] = 0;
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === '(') {
-            d[i + 1] = 0;
-        } else if (s[i - 1] === '(') {
-            d[i + 1] = d[i - 1] + 2;
-            res = Math.max(d[i + 1], res);
-        } else if (s[i - 1 - d[i]] === '(') {
-            d[i + 1] = d[i] + 2 + d[i - d[i] - 1];
-            res = Math.max(d[i + 1], res);
+var search = function(nums, target) {
+    // First find the rotated point.
+    let st = 0;
+    let ed = nums.length - 1;
+    let offset = -1;
+    while (st + 1 < ed) {
+        let md = Math.floor((st + ed) / 2);
+        console.log("st: " + st + " ed: " + ed + " md: " + md);
+        if (nums[st] < nums[md] && nums[st] < nums[ed]) {
+            offset = st;
+            break;
+        } else if (nums[st] < nums[md] && nums[md] > nums[ed]) {
+            st = md;
+        } else if (nums[st] > nums[md] && nums[md] < nums[ed]) {
+            ed = md;
+        } else if (nums[st] > nums[md] && nums[md] > nums[ed]) {
+        }
+    }
+    if (nums[st] > nums[ed]) {
+        offset = ed;
+    }
+
+    console.log("offset: " + offset);
+
+    // Use offset to change the index
+    st = 0;
+    ed = nums.length - 1;
+    while (st + 1 < ed) {
+        let md = Math.floor((st + ed) / 2);
+        let val = nums[convertIdx(md, offset, nums.length)];
+        if (val === target) {
+            return convertIdx(md, offset, nums.length);
+        } else if (val > target) {
+            ed = md;
         } else {
-            d[i + 1] = 0;
+            st = md;
         }
     }
 
-    return res;
-    // Solution 2: use stack
+    if (nums[convertIdx(st, offset, nums.length)] === target) {
+        return convertIdx(st, offset, nums.length);
+    } else if (nums[convertIdx(ed, offset, nums.length)] === target) {
+        return convertIdx(ed, offset, nums.length);
+    } else {
+        return -1;
+    }
+};
+
+const convertIdx = function(idx, offset, totalLength) {
+    return (idx + offset) % totalLength;
 };
 
 document.getElementById("search-in-rotated-sorted-array").innerHTML =
-    longestValidParentheses("()(())");
+    search([4,5,6,7,0,1], 6);
