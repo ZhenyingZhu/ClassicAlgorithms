@@ -10,22 +10,23 @@ var search = function(nums, target) {
     let offset = -1;
     while (st + 1 < ed) {
         let md = Math.floor((st + ed) / 2);
-        console.log("st: " + st + " ed: " + ed + " md: " + md);
-        if (nums[st] < nums[md] && nums[st] < nums[ed]) {
+        // console.log("st: " + st + " ed: " + ed + " md: " + md);
+        if (nums[st] < nums[ed]) {
             offset = st;
             break;
-        } else if (nums[st] < nums[md] && nums[md] > nums[ed]) {
-            st = md;
-        } else if (nums[st] > nums[md] && nums[md] < nums[ed]) {
+        } else if (nums[md] < nums[st]) {
             ed = md;
-        } else if (nums[st] > nums[md] && nums[md] > nums[ed]) {
+        } else {
+            st = md;
         }
     }
     if (nums[st] > nums[ed]) {
         offset = ed;
+    } else {
+        offset = st;
     }
 
-    console.log("offset: " + offset);
+    // console.log("offset: " + offset);
 
     // Use offset to change the index
     st = 0;
