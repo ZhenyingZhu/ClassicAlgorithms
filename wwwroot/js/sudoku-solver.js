@@ -20,13 +20,7 @@ var solveSudoku = function(board) {
         }
     }
 
-    for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board[0].length; j++) {
-            if (board[i][j] === '.') {
-                possibles[i * 9 + j] = [];
-            }
-        }
-    }
+    // use recursion
 };
 
 const createOrInsertVal = function(arr, idx, val) {
