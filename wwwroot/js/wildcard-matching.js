@@ -26,12 +26,23 @@ var isMatch = function(s, p) {
             if (s[i - 1] === p[j - 1] || p[j - 1] === "?") {
                 d[i][j] = d[i - 1][j - 1];
             } else if (p[j - 1] === "*") {
-                for (let k = 0; k < )
+                d[i][j] = false;
+                for (let k = 0; k <= i; k++) {
+                    if (d[k][j - 1]) {
+                        d[i][j] = true;
+                        break;
+                    }
+                }
+            } else {
+                d[i][j] = false;
             }
         }
+        // console.log(d[i]);
     }
+
+    return d[s.length][p.length];
 };
 
 document.getElementById("wildcard-matching").innerHTML =
     // isMatch("aa", "a");
-    isMatch("aa", "a");
+    isMatch("aa", "*");
