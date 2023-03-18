@@ -67,4 +67,4 @@ const solveNQueensNS = {
 
 document.getElementById("n-queens").innerHTML =
     //solveNQueens(4);
-    solveNQueens(3);
+    solveNQueens(6);
