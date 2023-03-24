@@ -16,7 +16,6 @@ var merge = function(intervals) {
     for (let i = 1; i < intervals.length; i++) {
         let cur = intervals[i];
         if (cur[0] > ed) {
-            console.log(st, ed);
             res.push([st, ed]);
             st = cur[0];
             ed = cur[1];
