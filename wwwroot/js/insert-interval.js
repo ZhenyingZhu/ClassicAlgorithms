@@ -10,7 +10,6 @@ var insert = function(intervals, newInterval) {
     let ed = newInterval[1];
     let inserted = false;
     for (let i = 0; i < intervals.length; i++) {
-        console.log(res);
         let cur = intervals[i];
         if (cur[0] > ed) {
             if (!inserted) {
