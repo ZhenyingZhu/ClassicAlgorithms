@@ -3,7 +3,29 @@
  * @return {boolean}
  */
 var isNumber = function(s) {
-    
+    if (s.length === 0) {
+        return false;
+    }
+
+    let arr = s.split('e');
+    if (arr.length > 2) {
+        return false;
+    }
+    if (arr.length === 1) {
+        arr = s.split('E');
+    }
+
+    if (arr.length === 1) {
+        return isNumberNS.isSignedInteger(s) || isNumberNS.isSignedDecimal(s);
+    }
+
+    let x = arr[0];
+    if (!isNumberNS.isSignedInteger(x) && !isNumberNS.isSignedDecimal(x)) {
+        return false;
+    }
+
+    x = arr[1];
+    return isNumberNS.isSignedInteger(x);
 };
 
 const isNumberNS = {
@@ -46,6 +68,10 @@ const isNumberNS = {
     },
 
     isDecimal: function(s) {
+        if (s.length === 0) {
+            return false;
+        }
+
         const arr = s.split('.');
         if (arr.length > 2) {
             return false;
@@ -71,4 +97,5 @@ const isNumberNS = {
 };
 
 document.getElementById("valid-number").innerHTML =
-    isNumber([[1,2,3],[4,5,6]]);
+    // isNumber("95a54e53");
+    isNumber("+eo");
