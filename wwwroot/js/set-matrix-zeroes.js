@@ -14,7 +14,7 @@ var setZeroes = function(matrix) {
         }
     }
 
-    console.log(JSON.parse(JSON.stringify(matrix)));
+    // console.log(JSON.parse(JSON.stringify(matrix)));
 
     for (let i = 1; i < m; i++) {
         for (let j = 1; j < n; j++) {
