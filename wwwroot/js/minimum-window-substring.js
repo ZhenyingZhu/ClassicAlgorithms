@@ -17,8 +17,6 @@ var minWindow = function(s, t) {
         tdict[c] = tdict[c] === undefined ? 1 : tdict[c] + 1;
     }
 
-    console.log(tdict);
-
     // First scan from start until all the chars in t are find,
     // then move start until chars in t are just met, and use start to here as one of the result.
     // then move start one char ahead, so result is invalid, and find the next valid result.
@@ -57,11 +55,11 @@ var minWindow = function(s, t) {
             st++;
         }
 
-        console.log(s.substring(st, i));
+        // console.log(s.substring(st, i + 1));
 
         // Compare it with the previous result.
         if (res.length === 0 || (i - st) < res.length) {
-            res = s.substring(st, i);
+            res = s.substring(st, i + 1);
         }
         totalLen--;
         sdict[s[st]]--;
@@ -72,4 +70,5 @@ var minWindow = function(s, t) {
 };
 
 document.getElementById("minimum-window-substring").innerHTML =
-    minWindow("ADOBECODEBANC", "ABC");
+    // minWindow("ADOBECODEBANC", "ABC");
+    minWindow("AAABBCA", "ABC");
