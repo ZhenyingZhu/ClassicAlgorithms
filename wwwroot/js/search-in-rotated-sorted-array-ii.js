@@ -15,8 +15,7 @@ var search = function(nums, target) {
         if (nums[st] === nums[ed]) {
             st++;
             ed--;
-        }
-        else if (nums[st] < nums[ed]) {
+        } else if (nums[st] < nums[ed]) {
             // definitely no rotate in between.
             if (nums[md] > target) {
                 ed = md;
@@ -33,6 +32,7 @@ var search = function(nums, target) {
                 st = md;
             }
         } else if (nums[md] < nums[ed]) {
+            // definitely no rotate in second half.
             if (target < nums[md]) {
                 ed = md;
             } else if (nums[ed] < target) {
@@ -40,6 +40,9 @@ var search = function(nums, target) {
             } else {
                 st = md;
             }
+        } else {
+            st++;
+            ed--;
         }
     }
 
@@ -48,4 +51,5 @@ var search = function(nums, target) {
 
 document.getElementById("search-in-rotated-sorted-array-ii").innerHTML =
     // search([2,5,6,0,0,1,2], 0);
-    search([2,5,6,0,0,1,2], 3);
+    // search([2,5,6,0,0,1,2], 3);
+    search([3,1,1], 0);
