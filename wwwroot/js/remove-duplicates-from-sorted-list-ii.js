@@ -10,21 +10,32 @@
  * @return {ListNode}
  */
 var deleteDuplicates = function(head) {
-    let dummy = new ListNode();
-    dummy.next = head;
+    if (head === null) {
+        return head;
+    }
 
+    let dummy = new ListNode();
     let pre = dummy;
     let cur = head;
     while (cur !== null) {
         let val = cur.val;
-        let next = cur.next;
-        while (next !== null && next.val === val) {
-            next = next.next;
+        let run = cur.next;
+        while (run !== null && run.val === val) {
+            run = run.next;
+        }
+
+        if (run === cur.next) {
+            pre.next = cur;
+            pre = cur;
+            cur = cur.next;
+        } else {
+            pre.next = null;
+            cur = run;
         }
     }
+
+    return dummy.next;
 };
 
 document.getElementById("remove-duplicates-from-sorted-list-ii").innerHTML =
-    // search([2,5,6,0,0,1,2], 0);
-    // search([2,5,6,0,0,1,2], 3);
-    search([3,1,1], 0);
+    traverseListNode(deleteDuplicates(createList([0,1,1,1,2,2])));
