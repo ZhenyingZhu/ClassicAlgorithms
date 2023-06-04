@@ -2,7 +2,7 @@
  * @param {number[]} heights
  * @return {number}
  */
-var largestRectangleArea = function(heights) {
+var largestRectangleAreaDP = function(heights) {
     // area = minHeight(x, y) * (y - x + 1)
     // minHeight(x, y) = min(minHeight(x, y - 1), height(y))
     let m = heights.length;
@@ -31,6 +31,40 @@ var largestRectangleArea = function(heights) {
     return maxArea;
 };
 
+/**
+ * @param {number[]} heights
+ * @return {number}
+ */
+ var largestRectangleArea = function(heights) {
+    // use stack to record previous min height
+    let m = heights.length;
+    if (m === 0) {
+        return 0;
+    }
+
+    let hStack = [0];
+    let iStack = [-1];
+    let maxArea = 0;
+    for (let i = 0; i < m; i++) {
+        if (hStack[hStack.length - 1] < heights[i]) {
+            hStack.push(heights[i]);
+            iStack.push(i);
+        } else if (hStack[hStack.length - 1] > heights[i]) {
+
+        }
+    }
+
+    return maxArea;
+};
+
+let largestRectangleAreaNS = {
+    helper: function(hStack, iStack, height, idx) {
+        while (hStack[hStack.length - 1] > height) {
+            
+        }
+    }
+};
+
 document.getElementById("largest-rectangle-in-histogram").innerHTML =
-    // largestRectangleArea([2,1,5,6,2,3]);
-    largestRectangleArea([2,4]);
+    largestRectangleArea([2,1,5,6,2,3]);
+    // largestRectangleArea([2,4]);
