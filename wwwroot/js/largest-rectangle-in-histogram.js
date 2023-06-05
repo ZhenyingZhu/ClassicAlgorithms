@@ -45,26 +45,30 @@ var largestRectangleAreaDP = function(heights) {
     let hStack = [0];
     let iStack = [-1];
     let maxArea = 0;
-    for (let i = 0; i < m; i++) {
-        if (hStack[hStack.length - 1] < heights[i]) {
-            hStack.push(heights[i]);
-            iStack.push(i);
-        } else if (hStack[hStack.length - 1] > heights[i]) {
+    let i = 0;
+    while (i <= m) {
+        if (i === m || hStack[hStack.length - 1] > heights[i]) {
+            if (hStack.length === 0) {
+                break;
+            }
 
+            let h = hStack.pop();
+            let st = iStack.pop();
+            maxArea = Math.max(h * (i - st), maxArea);
+        } else if (hStack[hStack.length - 1] < heights[i]) {
+            hStack.push(heights[i]);
+            iStack.push(iStack[iStack.length - 1] + 1);
+            i++;
+        } else {
+            // the current height same as the top of the stack.
+            i++;
         }
     }
 
     return maxArea;
 };
 
-let largestRectangleAreaNS = {
-    helper: function(hStack, iStack, height, idx) {
-        while (hStack[hStack.length - 1] > height) {
-            
-        }
-    }
-};
-
 document.getElementById("largest-rectangle-in-histogram").innerHTML =
-    largestRectangleArea([2,1,5,6,2,3]);
+    largestRectangleArea([2,1,5,5,6,2,3]);
     // largestRectangleArea([2,4]);
+    // largestRectangleArea([2,1,2]);
