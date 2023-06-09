@@ -3,7 +3,7 @@
  * @return {number}
  */
 var maximalRectangle = function(matrix) {
-    // seems like can combine largestrectranglearea with this.
+    // Use 2 DPs.
 };
 
 document.getElementById("maximal-rectangle").innerHTML =
