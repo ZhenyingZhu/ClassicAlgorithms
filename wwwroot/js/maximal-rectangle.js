@@ -26,18 +26,22 @@ var maximalRectangle = function(matrix) {
 
     let maxArea = 0;
     for (let i = 0; i < m; i++) {
-        let jStack = [-1];
-        let hStack = [-1];
-        let j = 0;
-        while (j < n) {
+        for (let j = 0; j < n; j++) {
+            let minHeight = heights[i][j];
+            if (minHeight === 0) {
+                continue;
+            }
 
+            for (let k = j; k >= 0 && heights[i][k] > 0; k--) {
+                minHeight = Math.min(minHeight, heights[i][k]);
+                maxArea = Math.max(maxArea, minHeight * (j - k + 1));
+            }
         }
     }
+
+    return maxArea;
 };
 
 document.getElementById("maximal-rectangle").innerHTML =
-    // largestRectangleArea([2,1,5,5,6,2,3]);
-    // largestRectangleArea([2,4]);
-    // largestRectangleArea([2,1,2]);
-    // largestRectangleArea([0,9]);
-    largestRectangleArea([0,1,0,1]);
+    // maximalRectangle([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]);
+    maximalRectangle([["1"]]);
