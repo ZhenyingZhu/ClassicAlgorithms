@@ -5,6 +5,13 @@
  */
 var isScramble = function(s1, s2) {
     // Use DP. dp[i][j][k] means whether s1[i:i+k] is a scramble of s2[j:j+k].
+    // dp[i][j][k] = for x in 0:k, dp[i][j+k-x][x] && dp[i+k-x][j][x]
+};
+
+const isScrambleNS = {
+    helper: function() {
+        
+    }
 };
 
 document.getElementById("scramble-string").innerHTML =
