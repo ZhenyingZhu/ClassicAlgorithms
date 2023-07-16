@@ -21,11 +21,11 @@ var partition = function(head, x) {
         if (cur.val < x) {
             smaller.next = cur;
             smaller = smaller.next;
-            console.log("smaller: " + smaller.val);
+            // console.log("smaller: " + smaller.val);
         } else {
             equalGreater.next = cur;
             equalGreater = equalGreater.next;
-            console.log("greater: " + equalGreater.val);
+            // console.log("greater: " + equalGreater.val);
         }
         cur = cur.next;
     }
