@@ -13,17 +13,12 @@ var subsetsWithDup = function(nums) {
 
 const subsetsWithDupNS = {
     helper: function(nums, st, cur, res) {
-        if (st === nums.length) {
-            res.push(JSON.parse(JSON.stringify(cur)));
-            return;
-        }
+        res.push(JSON.parse(JSON.stringify(cur)));
 
         for (let i = st; i < nums.length; i++) {
-            if (i > st && nums[i] === nums[i - 1]) {
+            if (i !== st && nums[i] === nums[i - 1]) {
                 continue;
             }
-
-            this.helper(nums, i + 1, cur, res);
 
             cur.push(nums[i]);
             this.helper(nums, i + 1, cur, res);
@@ -33,4 +28,4 @@ const subsetsWithDupNS = {
 };
 
 document.getElementById("subsets-ii").innerHTML =
-    subsetsWithDup([1, 2, 2]);
+    subsetsWithDup([1, 2, 2, 3, 3]);
