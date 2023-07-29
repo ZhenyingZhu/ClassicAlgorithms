@@ -7,7 +7,7 @@ var subsetsWithDup = function(nums) {
     let res = [];
     subsetsWithDupNS.helper(nums, 0, [], res);
 
-    for (let i = 0; i < res.length; i++) { console.log(res[i]); console.log("end"); }
+    for (let i = 0; i < res.length; i++) { console.log(res[i]); console.log("end: " + i); }
     return res;
 };
 
@@ -18,16 +18,17 @@ const subsetsWithDupNS = {
             return;
         }
 
-        cur.push(nums[st]);
-        let next = st + 1;
-        while (next < nums.length && nums[next] === nums[st]) {
-            next++;
+        for (let i = st; i < nums.length; i++) {
+            if (i > st && nums[i] === nums[i - 1]) {
+                continue;
+            }
+
+            this.helper(nums, i + 1, cur, res);
+
+            cur.push(nums[i]);
+            this.helper(nums, i + 1, cur, res);
+            cur.pop();
         }
-        this.helper(nums, next, cur, res);
-
-        cur.pop();
-
-        this.helper(nums, st + 1, cur, res);
     }
 };
 
