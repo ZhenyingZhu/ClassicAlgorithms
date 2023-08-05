@@ -7,7 +7,7 @@ var subsetsWithDup = function(nums) {
     let res = [];
     subsetsWithDupNS.helper(nums, 0, [], res);
 
-    for (let i = 0; i < res.length; i++) { console.log(res[i]); console.log("end: " + i); }
+    // for (let i = 0; i < res.length; i++) { console.log(res[i]); console.log("end: " + i); }
     return res;
 };
 
