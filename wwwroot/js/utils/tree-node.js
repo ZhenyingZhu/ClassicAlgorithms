@@ -3,7 +3,7 @@ function TreeNode(val, left, right) {
     this.val = (val === undefined ? 0 : val)
     this.left = (left === undefined ? null : left)
     this.right = (right === undefined ? null : right)
-}
+};
 
 const createTree = function(preorder, inorder) {
     if (preorder.length !== inorder.length) {
@@ -38,4 +38,22 @@ const traverseTree = function(node) {
     if (node.right !== null) {
         traverseTree(node.right);
     }
+};
+
+const printTree = function(node) {
+    let res = new Array();
+    printTreeTraverse(node, res);
+    return "[" + res.join(",") + "]";
+};
+
+const printTreeTraverse = function(node, res) {
+    if (node === null) {
+        res.push("null");
+        return;
+    }
+
+    res.push(node.val);
+
+    printTreeTraverse(node.left, res);
+    printTreeTraverse(node.right, res);
 };
