@@ -4,28 +4,21 @@ using System.Collections.Generic;
 namespace Algorithms
 {
     /// <summary>
-    /// 
+    /// Find the max of the closest distances to islands.
+    /// In the ocean, put rescue ships on every island. What is the longest distance a ship need to sail to cover any points?
     /// </summary>
     /// <remarks>
     /// Leetcode 1162
     /// </remarks>
     public class AsFarFromLandAsPossible
     {
-        public static int MaxDistance(int[][] grid)
-        {
+        // Solution 1: multi source BFS from 1s. Use a matrix to store visited cells.
+        // Solution 2: DP from top-left and down-right twice.
+
+        public static int MaxDistance(int[][] grid) {
             int n = grid.Length;
 
             if (n == 0) return 0;
-
-            int[][] dist = new int[n][];
-            for (int i = 0; i < n; i++)
-            {
-                dist[i] = new int[n];
-                for (int j = 0; j < n; j++)
-                {
-                    dist[i][j] = int.MaxValue;
-                }
-            }
 
             for (int i = 0; i < n; i++)
             {
@@ -33,7 +26,8 @@ namespace Algorithms
                 {
                     if (grid[i][j] == 1)
                     {
-                        BFS(grid, dist, i, j);
+                        // the negative value is the distance to the close land.
+                        BFS(grid, i, j);
                     }
                 }
             }
@@ -43,17 +37,17 @@ namespace Algorithms
             {
                 for (int j = 0;j < n; j++)
                 {
-                    if (dist[i][j] > maxDist)
+                    if (grid[i][j] < 0)
                     {
-                        maxDist = dist[i][j];
+                        maxDist = Math.Max(maxDist, -grid[i][j]);
                     }
                 }
             }
 
-            return (maxDist == int.MaxValue || maxDist == 0) ? - 1 : maxDist;
+            return maxDist == 0 ? - 1 : maxDist;
         }
 
-        private static void BFS(int[][] grid, int[][] dist, int i, int j)
+        private static void BFS(int[][] grid, int i, int j)
         {
             int n = grid.Length;
 
@@ -63,8 +57,7 @@ namespace Algorithms
             xQueue.Enqueue(i);
             yQueue.Enqueue(j);
 
-            int curDist = 0;
-            dQueue.Enqueue(curDist);
+            dQueue.Enqueue(0);
 
             while (xQueue.Count > 0)
             {
@@ -72,34 +65,41 @@ namespace Algorithms
                 int y = yQueue.Dequeue();
                 int d = dQueue.Dequeue();
 
-                if (x < 0 || x >= n || y < 0 || y >= n)
+                if (d != 0 && grid[x][y] != 0 && -grid[x][y] <= d)
                 {
                     continue;
                 }
 
-                if (dist[x][y] <= d + 1)
+                grid[x][y] = d == 0 ? 1 : -d;
+
+                d++;
+                if (x > 0)
                 {
-                    continue;
+                    xQueue.Enqueue(x - 1);
+                    yQueue.Enqueue(y);
+                    dQueue.Enqueue(d);
                 }
 
-                // ?
-                dist[x][y] = d;
+                if (x < n - 1)
+                {
+                    xQueue.Enqueue(x + 1);
+                    yQueue.Enqueue(y);
+                    dQueue.Enqueue(d);
+                }
 
-                xQueue.Enqueue(x - 1);
-                yQueue.Enqueue(y);
-                dQueue.Enqueue(d + 1);
+                if (y > 0)
+                {
+                    xQueue.Enqueue(x);
+                    yQueue.Enqueue(y - 1);
+                    dQueue.Enqueue(d);
+                }
 
-                xQueue.Enqueue(x + 1);
-                yQueue.Enqueue(y);
-                dQueue.Enqueue(d + 1);
-
-                xQueue.Enqueue(x);
-                yQueue.Enqueue(y - 1);
-                dQueue.Enqueue(d + 1);
-
-                xQueue.Enqueue(x);
-                yQueue.Enqueue(y + 1);
-                dQueue.Enqueue(d + 1);
+                if (y < n - 1)
+                {
+                    xQueue.Enqueue(x);
+                    yQueue.Enqueue(y + 1);
+                    dQueue.Enqueue(d);
+                }
             }
         }
     }
