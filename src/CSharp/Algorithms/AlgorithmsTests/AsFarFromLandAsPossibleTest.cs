@@ -14,9 +14,9 @@ namespace AlgorithmsTests
         [TestMethod]
         public void TestMaxDistance()
         {
-            Assert.AreEqual(2, AsFarFromLandAsPossible.MaxDistance([[1, 0, 1], [0, 0, 0], [1, 0, 1]]));
-            Assert.AreEqual(4, AsFarFromLandAsPossible.MaxDistance([[1, 0, 0], [0, 0, 0], [0, 0, 0]]));
-            Assert.AreEqual(-1, AsFarFromLandAsPossible.MaxDistance([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]));
+            Assert.AreEqual(2, AsFarFromLandAsPossible.MaxDistanceBFS([[1, 0, 1], [0, 0, 0], [1, 0, 1]]));
+            Assert.AreEqual(4, AsFarFromLandAsPossible.MaxDistanceBFS([[1, 0, 0], [0, 0, 0], [0, 0, 0]]));
+            Assert.AreEqual(-1, AsFarFromLandAsPossible.MaxDistanceBFS([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]));
         }
     }
 }
