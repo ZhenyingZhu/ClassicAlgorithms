@@ -62,6 +62,76 @@ namespace Algorithms
         }
 
         // Solution 2: DP from top-left and down-right twice.
+        public static int MaxDistanceDP(int[][] grid)
+        {
+            int n = grid.Length;
+            int[][] distances = new int[n][];
+            for (int i = 0; i < n; i++)
+            {
+                distances[i] = new int[n];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (grid[i][j] == 1)
+                    {
+                        distances[i][j] = 0;
+                    }
+                    else if (i == 0 && j == 0)
+                    {
+                        distances[i][j] = 2 * n;
+                    }
+                    else if (i == 0)
+                    {
+                        distances[i][j] = distances[i][j - 1] + 1;
+                    }
+                    else if (j == 0)
+                    {
+                        distances[i][j] = distances[i - 1][j] + 1;
+                    }
+                    else
+                    {
+                        distances[i][j] = Math.Min(distances[i - 1][j], distances[i][j - 1]) + 1;
+                    }
+                }
+            }
+
+            int maxDist = 0;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                for (int j = n - 1; j >= 0; j--)
+                {
+                    if (i == n - 1 && j == n - 1)
+                    {
+                    }
+                    else if (i == n - 1)
+                    {
+                        distances[i][j] = Math.Min(distances[i][j], distances[i][j + 1] + 1);
+                    }
+                    else if (j == n - 1)
+                    {
+                        distances[i][j] = Math.Min(distances[i][j], distances[i + 1][j] + 1);
+                    }
+                    else
+                    {
+                        distances[i][j] = Math.Min(distances[i][j], Math.Min(distances[i][j + 1] + 1, distances[i + 1][j] + 1));
+                    }
+
+                    maxDist = Math.Max(maxDist, distances[i][j]);
+                }
+            }
+
+            if (maxDist == 0 || maxDist >= 2 * n)
+            {
+                return -1;
+            }
+            else
+            {
+                return maxDist;
+            }
+        }
 
         // Solution 3: use negative value to update the original input.
         public static int MaxDistanceSpaceOptimized(int[][] grid) {
