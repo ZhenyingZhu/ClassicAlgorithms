@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Algorithms
 {
+    /// <summary>
+    /// Find the max of the closest distances to islands.
+    /// In the ocean, put rescue ships on every island. What is the longest distance a ship need to sail to cover any points?
+    /// </summary>
+    /// <remarks>
+    /// Leetcode 1162
+    /// </remarks>
     public class AsFarFromLandAsPossibleTake2
     {
-        /// <summary>
-        /// Find the max of the closest distances to islands.
-        /// In the ocean, put rescue ships on every island. What is the longest distance a ship need to sail to cover any points?
-        /// </summary>
-        /// <remarks>
-        /// Leetcode 1162
-        /// </remarks>
         public static int MaxDistanceBFS(int[][] grid)
         {
             int n = grid.Length;
@@ -57,6 +57,47 @@ namespace Algorithms
             }
 
             return dist == 0 ? -1 : dist;
+        }
+
+        public static int MaxDistanceDP(int[][] grid)
+        {
+            int n = grid.Length;
+            int max = 2 * n;
+            int[,] distances = new int[n, n];
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (grid[i][j] == 1)
+                    {
+                        distances[i, j] = 0;
+                    }
+                    else
+                    {
+                        int up = i == 0 ? max : distances[i - 1, j];
+                        int left = j == 0 ? max : distances[i, j - 1];
+                        distances[i, j] = Math.Min(left, up) == max ? max : Math.Min(left, up) + 1;
+                    }
+                }
+            }
+
+            int maxDistance = -1;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                for (int j = n - 1; j >= 0; j--)
+                {
+                    if (grid[i][j] != 1)
+                    {
+                        int down = i == n - 1 ? max : distances[i + 1, j];
+                        int right = j == n - 1 ? max : distances[i, j + 1];
+                        distances[i, j] = Math.Min(distances[i, j], Math.Min(down, right) == max ? max : Math.Min(down, right) + 1);
+
+                        maxDistance = Math.Max(maxDistance, distances[i, j]);
+                    }
+                }
+            }
+
+            return maxDistance == max ? -1 : maxDistance;
         }
     }
 }
