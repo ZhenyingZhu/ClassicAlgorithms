@@ -21,7 +21,7 @@ namespace Algorithms
             bool[,] visited = new bool[n, n];
 
             Queue<Tuple<int, int>> visiting = new();
-            for (int i  = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
@@ -43,7 +43,7 @@ namespace Algorithms
                 for (int i = 0; i < size; i++)
                 {
                     Tuple<int, int> st = visiting.Dequeue();
-                    foreach (var direction  in directions)
+                    foreach (var direction in directions)
                     {
                         int x = st.Item1 + direction[0];
                         int y = st.Item2 + direction[1];
