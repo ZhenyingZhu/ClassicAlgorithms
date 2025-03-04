@@ -63,6 +63,7 @@ namespace Algorithms
         {
             int n = grid.Length;
             int max = 2 * n;
+
             int[,] distances = new int[n, n];
             for (int i = 0; i < n; i++)
             {
