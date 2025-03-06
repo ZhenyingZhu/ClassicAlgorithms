@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,24 +16,52 @@ namespace Algorithms
     /// </remarks>
     public class AsFarFromLandAsPossibleTake3
     {
-        public int DFS(int[][] grid)
+        public static int DFS(int[][] grid)
         {
-            int n = grid.length;
+            int n = grid.Length;
 
-            Queue<int[]> queue = new LinkedList<>();
+            bool[][] visited = new bool[n][];
+            for (int i = 0; i < n; i++)
+            {
+                visited[i] = new bool[n];
+            }
+
+            Queue<int[]> queue = new ();
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
                     if (grid[i][j] == 1)
                     {
-                        queue.enqueue(new int[] { i, j });
+                        queue.Enqueue(new int[] { i, j });
+                        visited[i][j] = true;
                     }
                 }
             }
 
-            bool[][] visited = new int[n][n];
-            int[][] directions = new int[][] { new int[] { -1, 0 }, new int[] { 1, 0 }, new int[] { 0, -1 }, new int[] { 0, 1 } };
+            int dist = -1;
+            int[] directions = { -1, 0, 1, 0, -1 };
+            while (queue.Any())
+            {
+                int size = queue.Count;
+                for (int k = 0; k < size; k++)
+                {
+                    int[] point = queue.Dequeue();
+                    for (int i = 0; i < 4; i++)
+                    {
+                        int x = point[0] + directions[i];
+                        int y = point[1] + directions[i + 1];
+                        if (x >= 0 && x < n && y >= 0 && y < n && !visited[x][y])
+                        {
+                            queue.Enqueue(new int[] { x, y });
+                            visited[x][y] = true;
+                        }
+                    }
+                }
+                dist++;
+            }
+
+            return dist == 0 ? -1 : dist;
         }
     }
 }
