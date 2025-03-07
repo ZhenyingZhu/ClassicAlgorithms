@@ -25,6 +25,8 @@ namespace AlgorithmsTests
             Assert.AreEqual(-1, AsFarFromLandAsPossibleTake2.MaxDistanceDP([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]));
             Assert.AreEqual(-1, AsFarFromLandAsPossibleTake2.MaxDistanceDP([[0, 0],[0, 0]]));
             Assert.AreEqual(-1, AsFarFromLandAsPossibleTake2.MaxDistanceDP([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]));
+
+            Assert.AreEqual(0, AsFarFromLandAsPossibleTake3.MaxDistanceBFS([[1]]));
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Algorithms
     /// </remarks>
     public class AsFarFromLandAsPossibleTake3
     {
-        public static int DFS(int[][] grid)
+        public static int MaxDistanceBFS(int[][] grid)
         {
             int n = grid.Length;
 
@@ -61,6 +61,8 @@ namespace Algorithms
                 dist++;
             }
 
+            // -1 can happen when no island
+            // 0 can happen all islands
             return dist == 0 ? -1 : dist;
         }
     }
