@@ -28,6 +28,12 @@ namespace AlgorithmsTests
 
             // Just use VS code .NET extension to run test
             Assert.AreEqual(-1, AsFarFromLandAsPossibleTake3.MaxDistanceBFS([[1]]));
+
+            Assert.AreEqual(2, AsFarFromLandAsPossibleTake3.MaxDistanceDP([[1, 0, 1], [0, 0, 0], [1, 0, 1]]));
+            Assert.AreEqual(4, AsFarFromLandAsPossibleTake3.MaxDistanceDP([[1, 0, 0], [0, 0, 0], [0, 0, 0]]));
+            Assert.AreEqual(-1, AsFarFromLandAsPossibleTake3.MaxDistanceDP([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]));
+            Assert.AreEqual(-1, AsFarFromLandAsPossibleTake3.MaxDistanceDP([[0, 0],[0, 0]]));
+            Assert.AreEqual(-1, AsFarFromLandAsPossibleTake3.MaxDistanceDP([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]));
         }
     }
 }
