@@ -39,6 +39,7 @@ namespace Algorithms
                 }
             }
 
+            // Can also save the dist to each entry in the queue
             int dist = -1;
             int[] directions = { -1, 0, 1, 0, -1 };
             while (queue.Any())
